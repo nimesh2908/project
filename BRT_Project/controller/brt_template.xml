@@ -1,0 +1,566 @@
+<odoo>
+    <template id="home">
+        <t t-call="web.layout">
+            <t t-call="Background_Remove_Tool.header"/>
+            <t t-call="Background_Remove_Tool.content"/>
+            <t t-call="Background_Remove_Tool.footer"/>
+        </t>
+    </template>
+
+    <template id="admin">
+        <t t-call="web.layout">
+            <t t-call="Background_Remove_Tool.adminHeader"/>
+            <t t-call="Background_Remove_Tool.footer"/>
+        </t>
+    </template>
+
+    <template id="customerDetails">
+        <t t-call="web.layout">
+            <t t-call="Background_Remove_Tool.adminHeader"/>
+                <div class="d-flex justify-content-center">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            Customer Details
+                        </div>
+                        <div class="card-body">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="credit-tab" data-bs-toggle="tab" data-bs-target="#credit" type="button" role="tab" aria-controls="credit" aria-selected="true" onClick="location.href='purchaseCredit'">Purchase Credit</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="billing-tab" data-bs-toggle="tab" data-bs-target="#billing" type="button" role="tab" aria-controls="billing" aria-selected="false" onClick="location.href='usageOfCredit'">Usage Of Credit</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <t t-call="Background_Remove_Tool.footer"/>
+        </t>
+    </template>
+
+    <template id="usageOfCredit">
+        <t t-call="web.layout">
+            <t t-call="Background_Remove_Tool.adminHeader"/>
+                <div class="d-flex justify-content-center mt-5" >
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Usage</h5>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="result" t-as="res">
+                                        <tr>
+                                            <td><t t-esc="res.id"></t></td>
+                                            <td>
+                                                <t t-esc="res.user_id.email"></t>
+                                            </td>
+                                            <td>
+                                                <p>
+                                                    <t t-esc="res.create_date.day"></t>/
+                                                    <t t-esc="res.create_date.month"></t>/
+                                                    <t t-esc="res.create_date.year"></t>
+                                                </p>
+                                            </td>
+                                        </tr>   
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <t t-call="Background_Remove_Tool.footer"/>
+        </t>
+    </template>
+
+    <template id="usage">
+        <t t-call="web.layout">
+            <t t-call="Background_Remove_Tool.userHeader"/>
+                <div class="d-flex justify-content-center mt-5" >
+                    <div class="card text-center" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Usage</h5>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="result" t-as="res">
+                                        <tr>
+                                            <td><t t-esc="res.id"></t></td>
+                                            <td>
+                                                <p>
+                                                    <t t-esc="res.create_date.day"></t>/
+                                                    <t t-esc="res.create_date.month"></t>/
+                                                    <t t-esc="res.create_date.year"></t>
+                                                </p>
+                                            </td>
+                                        </tr>   
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <t t-call="Background_Remove_Tool.footer"/>
+        </t>
+    </template>
+
+    <template id="purchaseCredit">
+        <t t-call="web.layout">
+            <t t-call="Background_Remove_Tool.adminHeader"/>
+                <div class="d-flex justify-content-center mt-5" >
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Billing And Payment</h5>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Credit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="result" t-as="res">
+                                        <tr>
+                                            <td><t t-esc="res.id"></t></td>
+                                            <td>
+                                                <t t-esc="res.user_id.email"></t>
+                                            </td>
+                                            <td>
+                                                <p>
+                                                    <t t-esc="res.create_date.day"></t>/
+                                                    <t t-esc="res.create_date.month"></t>/
+                                                    <t t-esc="res.create_date.year"></t>
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p>
+                                                    <t t-esc="res.credit"/>
+                                                </p>
+                                            </td>
+                                        </tr>   
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <t t-call="Background_Remove_Tool.footer"/>
+        </t>
+    </template>
+
+    <template id="payment">
+        <t t-call="web.layout">
+            <t t-call="Background_Remove_Tool.userHeader"/>
+                <div class="d-flex justify-content-center mt-5" >
+                    <div class="card text-center" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Billing And Payment</h5>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Credit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="result" t-as="res">
+                                        <tr>
+                                            <td><t t-esc="res.id"></t></td>
+                                            <td>
+                                                <p>
+                                                    <t t-esc="res.create_date.day"></t>/
+                                                    <t t-esc="res.create_date.month"></t>/
+                                                    <t t-esc="res.create_date.year"></t>
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p>
+                                                    <t t-esc="res.credit"/>
+                                                </p>
+                                            </td>
+                                        </tr>   
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <t t-call="Background_Remove_Tool.footer"/>
+        </t>
+    </template>
+
+    <template id="header">
+        <div class="p-3 mb-2 bg-dark text-white">
+            <div class="navbar">
+                <div class="conHeading">
+                    <h1 class="heading" onClick="location.href='home'">Background Remove Tool</h1>
+                </div>
+                <ul class="nav justify-content-end">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onClick="location.href='signup'">Signup</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-signin" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" onClick="location.href='signin'">Signin</button>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </template>
+
+    <template id="userHeader">
+        <div class="p-3 mb-2 bg-dark text-white">
+            <div class="navbar">
+                <div class="conHeading">
+                    <h1 class="heading">Background Remove Tool</h1>
+                </div>
+                <ul class="nav justify-content-end">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" type="button" onClick="location.href='backgroundRemove'">Background Remove</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" onClick="location.href='profile'">Profile</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" onClick="location.href='logout'">Logout</button>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </template>
+
+    <template id="adminHeader">
+        <div class="p-3 mb-2 bg-dark text-white">
+            <div class="navbar">
+                <div class="conHeading">
+                    <h1 class="heading">Background Remove Tool</h1>
+                </div>
+                <ul class="nav justify-content-end">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button  class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" onClick="location.href='customerDetails'">Customer Details</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" onClick="location.href='logout'">Logout</button>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </template>
+
+    <template id="profile">
+        <t t-call="web.layout">
+            <t t-call="Background_Remove_Tool.userHeader"/>
+                <div>
+                    <div class="d-flex justify-content-center">
+                        <div class="card text-center">
+                            <div class="card-header">
+                                Credit
+                            </div>
+                            <div class="card-body">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="credit-tab" data-bs-toggle="tab" data-bs-target="#credit" type="button" role="tab" aria-controls="credit" aria-selected="true" onClick="location.href='credit'">Credit</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="billing-tab" data-bs-toggle="tab" data-bs-target="#billing" type="button" role="tab" aria-controls="billing" aria-selected="false" onClick="location.href='payment'">Payment And Billing</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="apikey-tab" data-bs-toggle="tab" data-bs-target="#apikey" type="button" role="tab" aria-controls="apikey" aria-selected="false">API Key</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="usage-tab" data-bs-toggle="tab" data-bs-target="#usage" type="button" role="tab" aria-controls="usage" aria-selected="false" onClick="location.href='usage'">Usage</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="credit" role="tabpanel" aria-labelledby="credit-tab">
+                                        <div class="d-flex justify-content-center mt-5" >
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="card text-center">
+                                                        <div class="card-header">
+                                                            Subscription Plans
+                                                        </div>
+                                                        <form action="/subcription">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required="true" value="10"/>
+                                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                                    10 Credit
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="20"/>
+                                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                                    20 Credit
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"  name="flexRadioDefault" id="flexRadioDefault3" value="30"/>
+                                                                <label class="form-check-label" for="flexRadioDefault3">
+                                                                    30 Credit
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"  name="flexRadioDefault" id="flexRadioDefault4" value="40"/>
+                                                                <label class="form-check-label" for="flexRadioDefault4">
+                                                                    40 Credit
+                                                                </label>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Subscription</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            <div class="card text-center" style="width: 18rem;">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Your Credit</h5>
+                                                    <t t-if="request.session.get('user_id')">
+
+                                                    </t>
+                                                    <p t-esc="request.session.get('credit')"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" role="tabpanel" id="apikey" aria-labelledby="apikey-tab">
+                                        <div class="d-flex justify-content-center mt-5" >
+                                            <div class="card text-center" style="width: 18rem;">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">API Key</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <t t-call="Background_Remove_Tool.footer"/>
+        </t>
+    </template>
+
+    <template id="backgroundRemove">
+        <t t-call="web.layout">
+            <t t-call="Background_Remove_Tool.userHeader"/>
+            <t t-call="Background_Remove_Tool.content"/>
+            <t t-call="Background_Remove_Tool.footer"/>
+        </t>
+    </template>
+
+    <template id="signup">
+        <t t-call="web.layout">
+            <t t-call="Background_Remove_Tool.header"/>
+                <div class="d-flex justify-content-center" style="height:30em;">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            Signup Form
+                        </div>
+                        <div class="card-body">
+                            <form action="/signupSubmit">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                    <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                                    <input name="password" type="password" t-on-keyup="_onKeyUpPwd" class="form-control" id="exampleInputPassword1" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword2" class="form-label">Re-Password</label>
+                                    <input name="repassword" type="password" t-on-keyup="_onKeyUpRePwd" class="form-control" id="exampleInputPassword2" required="true"/>
+                                </div>
+                                <br></br>
+                                <button id="signupBtnId" type="submit" class="btn btn-secondary">Submit</button>
+                            </form>
+                        </div>
+                    </div>                              
+                </div>
+            <t t-call="Background_Remove_Tool.footer"/>
+        </t>
+    </template>
+
+    <template id="signin">
+        <t t-call="web.layout">
+            <t t-call="Background_Remove_Tool.header"/>
+                <div class="d-flex justify-content-center" style="height:26em;">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            Signin
+                        </div>
+                        <div class="card-body">
+                            <form action="/signinSubmit">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                    <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required="true"/>
+                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                                    <input name="password" type="password" class="form-control" id="exampleInputPassword1" required="true"/>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
+                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                </div>
+                                <br></br>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>                              
+                </div>
+            <t t-call="Background_Remove_Tool.footer"/>
+        </t>
+    </template>
+
+    <template id="content">
+                            <div class="centered">
+                                <div style="margin-bottom:500px;">
+                                    <div class="d-flex justify-content-center " style="height:26em;">
+                                        <div class="card text-center">
+                                            <div class="card-header text-dark">
+                                                Upload Image
+                                            </div>
+                                            <div class="card-body">
+                                                <input class="form-control" type="file" id="formFile"/>
+                                                <button class="btn btn-primary" onClick="location.href='upload'">Upload</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    </template>
+
+    <template id="footer">
+        <footer class="bg-dark text-center text-white">
+                        <div class="container p-4">
+                            <section class="mb-4">
+                                <a class="btn btn-outline-light btn-floating m-1" href="http://www.facebook.com" role="button">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+
+                                <a class="btn btn-outline-light btn-floating m-1" href="http://www.twitter.com" role="button">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+
+                                <a class="btn btn-outline-light btn-floating m-1" href="http://www.google.com" role="button">
+                                    <i class="fab fa-google"></i>
+                                </a>
+
+                                <a class="btn btn-outline-light btn-floating m-1" href="http://www.instagram.com" role="button">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+
+                                <a class="btn btn-outline-light btn-floating m-1" href="http://www.linkedin.com" role="button">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+
+                                <a class="btn btn-outline-light btn-floating m-1" href="http://www.github.com" role="button">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </section>
+                            <section class="mb-4">
+                                <p>
+                                    All trademarks, service marks, trade names, product names, logos and trade dress appearing on our website 
+                                    are the property of their respective owners. Adobe, Creative Cloud and Photoshop are either registered trademarks
+                                    or trademarks of Adobe in the United States and/or other countries.
+                                </p>
+                            </section>
+                            <section class="">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                                        <h5 class="text-uppercase">Support</h5>
+                                        <ul class="list-unstyled mb-0">
+                                            <li>
+                                                About Us
+                                            </li>
+                                            <li>
+                                                Contact Us
+                                            </li>
+                                            <li>
+                                                Review
+                                            </li>
+                                            <li>
+                                                FAQs
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                                        <h5 class="text-uppercase">Learn More</h5>
+                                        <ul class="list-unstyled mb-0">
+                                            <li>
+                                                Individuals
+                                            </li>
+                                            <li>
+                                                Photographer
+                                            </li>
+                                            <li>
+                                                Marketing
+                                            </li>
+                                            <li>
+                                                Ecommerce
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                                        <h5 class="text-uppercase">Tools And API</h5>
+                                        <ul class="list-unstyled mb-0">
+                                            <li>
+                                                API Documentation
+                                            </li>
+                                            <li>
+                                                Photoshop Extension
+                                            </li>
+                                            <li>
+                                                Windows/Mac/Ubantu
+                                            </li>
+                                            <li>
+                                                Design Templates
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                                        <h5 class="text-uppercase">Address</h5>
+                                        <ul class="list-unstyled mb-0">
+                                            <li>
+                                                <p>Tower III,</p>
+                                            </li>
+                                            <li>
+                                                <p>401 And 402, 4th Floor IT,</p>
+                                            </li>
+                                            <li>
+                                                <p>Infocity, </p>
+                                            </li>
+                                            <li>
+                                                <p>Gandhinagar, Gujarat 382007</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                            © 2021 Copyright By:
+                            <a class="text-white" href="https://instagram/dauntless_nims/">Nimesh</a>
+                        </div>
+                    </footer>
+    </template>
+</odoo>

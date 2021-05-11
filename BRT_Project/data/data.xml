@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="user_data1" model="admin.data">
+        <field name="email">Nimesh@gmail.com</field>
+        <field name="password">8</field>
+        <field name="repassword">8</field>
+        <field name="role">Admin</field>
+    </record>
+</odoo>
